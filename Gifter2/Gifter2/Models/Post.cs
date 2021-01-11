@@ -25,5 +25,6 @@ namespace Gifter2.Models
         public int UserProfileId { get; set; }
 
         public UserProfile UserProfile { get; set; }
+        public List<Comment> Comment { get; set; }
     }
 }
