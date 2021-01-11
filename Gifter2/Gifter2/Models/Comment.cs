@@ -15,8 +15,8 @@ namespace Gifter2.Models
         public UserProfile UserProfile { get; set; }
 
         [Required]
-        public int postId { get; set; }
-        public Post post { get; set; }
+        public int PostId { get; set; }
+        public Post Post { get; set; }
 
         [Required]
         public string Message { get; set; }
