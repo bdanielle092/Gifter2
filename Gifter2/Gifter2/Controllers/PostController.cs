@@ -38,14 +38,14 @@ namespace Gifter.Controllers
             return Ok(_postRepository.GetByUserProfileId(id));
         }
         [HttpPost]
-        public IActionResult Post(Post post)
+        public IActionResult Add(Post post)
         {
             _postRepository.Add(post);
             return CreatedAtAction("Get", new { id = post.Id }, post);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Post post)
+        public IActionResult update(int id, Post post)
         {
             if (id != post.Id)
             {
