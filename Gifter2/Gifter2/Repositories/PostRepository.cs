@@ -24,7 +24,10 @@ namespace Gifter2.Repositories
 
         public Post GetById(int id)
         {
-            return _context.Post.Include(p => p.UserProfile).FirstOrDefault(p => p.Id == id);
+            return _context.Post
+                .Include(p => p.UserProfile)
+                .Include(p => p.Comments)
+                .FirstOrDefault(p => p.Id == id);
         }
 
 
@@ -53,6 +56,29 @@ namespace Gifter2.Repositories
             var post = GetById(id);
             _context.Post.Remove(post);
             _context.SaveChanges();
+        }
+
+        public List<Post> Search(string criterion, bool sortDescending)
+        {
+            var query = _context.Post
+                                .Include(p => p.UserProfile)
+                                .Where(p => p.Title.Contains (criterion) ||  p.Caption.Contains(criterion));
+                                                               
+
+            return sortDescending
+                ? query.OrderByDescending(p => p.DateCreated).ToList()
+                : query.OrderBy(p => p.DateCreated).ToList();
+        }
+
+
+        public List<Post> Hottest(DateTime startDate)
+        {
+            var query = _context.Post
+                                .Include(p => p.UserProfile)
+                                .Where(p => p.DateCreated >= startDate);
+
+
+            return query.ToList();
         }
 
     }
