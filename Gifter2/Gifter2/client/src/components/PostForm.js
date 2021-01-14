@@ -21,7 +21,7 @@ const PostForm = props => {
     }
 
     const postNewForm = evt => {
-        //keep the browser from refreashing after the submit button it hit
+        //keep the browser from refreshing after the submit button it hit
         evt.preventDefault()
         setIsLoading(true)
         if (postForm.Title === "" || postForm.ImageUrl === "" || postForm.Caption === "") {

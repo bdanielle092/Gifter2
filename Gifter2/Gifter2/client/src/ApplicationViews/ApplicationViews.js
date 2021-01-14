@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
+import PostDetails from "../components/PostDetails";
 
 const ApplicationViews = props => {
     return (
@@ -12,6 +13,9 @@ const ApplicationViews = props => {
             }} />
             <Route exact path="/post/add" render={(props) => {
                 return <PostForm {...props} />
+            }} />
+            <Route exact path="/post/:id" render={(props) => {
+                return <PostDetails {...props} />
             }} />
 
 

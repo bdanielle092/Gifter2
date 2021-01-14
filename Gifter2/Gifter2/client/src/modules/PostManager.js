@@ -34,8 +34,6 @@ export default {
     getRecipesByUsername() {
         return fetch(`${remoteURL}/recipes?_expand=user`).then(result => result.json())
     },
-    getRecipeByType(id) {
-        return fetch(`${remoteURL}/recipes/${id}?&_expand=type&_expand=user`).then(result => result.json())
-    }
+
 
 }

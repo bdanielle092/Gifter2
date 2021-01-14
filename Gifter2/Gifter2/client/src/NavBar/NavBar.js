@@ -14,8 +14,8 @@ const NavBar = () => {
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand href="#home">Gifter</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/post/add">Add</Nav.Link>
+                    <Nav.Link href="/">Feed</Nav.Link>
+                    <Nav.Link href="/post/add">New Post</Nav.Link>
 
                 </Nav>
                 <Form inline>
