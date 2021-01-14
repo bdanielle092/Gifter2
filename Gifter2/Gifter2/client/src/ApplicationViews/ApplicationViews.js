@@ -1,8 +1,9 @@
 import React from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
-import PostList from "../components/PostList";
-import PostForm from "../components/PostForm";
-import PostDetails from "../components/PostDetails";
+import PostList from "../components/Post/PostList";
+import PostForm from "../components/Post/PostForm";
+import PostDetails from "../components/Post/PostDetails";
+import UserPost from "../components/Post/UserPost";
 
 const ApplicationViews = props => {
     return (
@@ -16,6 +17,9 @@ const ApplicationViews = props => {
             }} />
             <Route exact path="/post/:id" render={(props) => {
                 return <PostDetails {...props} />
+            }} />
+            <Route exact path="/users/:id" render={(props) => {
+                return <UserPost {...props} />
             }} />
 
 
