@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../Post/Post';
 import PostManager from "../../modules/PostManager";
+import PostSearch from "./Post";
 
 const PostList = () => {
     const [posts, setPosts] = useState([]);
@@ -15,6 +16,7 @@ const PostList = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="cards-column">
+                    <PostSearch onSearch={setPosts} />
                     {posts.map((post) => (
                         <Post key={post.id} post={post} />
                     ))}
