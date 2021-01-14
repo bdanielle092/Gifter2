@@ -70,6 +70,7 @@ namespace Gifter.Controllers
             return Ok(_postRepository.Search(q, sortDesc));
         }
 
+        //hottest is the end point and since is the query sting para.
         [HttpGet("hottest")]
         public IActionResult Hottest(DateTime since)
         {
