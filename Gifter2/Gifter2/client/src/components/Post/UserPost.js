@@ -3,17 +3,18 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 import { useParams } from "react-router-dom";
 import Post from "./Post";
 
-const PostDetails = () => {
-    const [post, setPost] = useState();
+
+const UserPost = () => {
+    const [users, setUsers] = useState();
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`/api/post/${id}`)
+        fetch(`/api/post/getByUser/${id}`)
             .then(res => res.json())
-            .then(post => setPost(post));
+            .then(users => setUsers(users));
     }, []);
 
-    if (!post) {
+    if (!users) {
         return null;
     }
 
@@ -21,16 +22,14 @@ const PostDetails = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
-                    <Post post={post} />
-                    <ListGroup>
-                        {post.comments.map((c) => (
-                            <ListGroupItem>{c.message}</ListGroupItem>
-                        ))}
-                    </ListGroup>
+                    {users.map((post) => (
+                        <Post key={post.id} post={post} />
+                    ))}
+
                 </div>
             </div>
         </div>
     );
 };
 
-export default PostDetails;
+export default UserPost;
