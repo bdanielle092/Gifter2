@@ -3,16 +3,16 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
 
-const ApplicationViews = () => {
+const ApplicationViews = props => {
     return (
         <Switch>
-            <Route path="/" exact>
-                <PostList />
-            </Route>
 
-            <Route path="/post/add">
-                <PostForm />
-            </Route>
+            <Route exact path="/" render={(props) => {
+                return <PostList {...props} />
+            }} />
+            <Route exact path="/post/add" render={(props) => {
+                return <PostForm {...props} />
+            }} />
 
 
         </Switch>

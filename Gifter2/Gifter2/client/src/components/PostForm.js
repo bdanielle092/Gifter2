@@ -5,10 +5,10 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import PostManager from "../modules/PostManager";
 
-const PostForm = () => {
+const PostForm = props => {
 
     const [postForm, setPostForm] = useState({ Title: "", ImageUrl: "", Caption: "", UserProfileId: 1, DateCreated: "1/13/2021 7:12:20 PM" })
-
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleFieldChange = evt => {
         //stateToChange is current state of PostForm which is empty right now
@@ -23,10 +23,13 @@ const PostForm = () => {
     const postNewForm = evt => {
         //keep the browser from refreashing after the submit button it hit
         evt.preventDefault()
+        setIsLoading(true)
         if (postForm.Title === "" || postForm.ImageUrl === "" || postForm.Caption === "") {
             window.alert("Please input field");
         } else {
             PostManager.post(postForm)
+                .then(() => props.history.push(""));
+
         };
 
     }
@@ -56,7 +59,7 @@ const PostForm = () => {
                 </Col>
             </Form.Group>
             <Col xs="auto">
-                <Button type="submit" className="mb-2" onClick={postNewForm}>
+                <Button type="submit" className="mb-2" disabled={isLoading} onClick={postNewForm}>
                     Submit
                 </Button>
             </Col>
