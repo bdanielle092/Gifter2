@@ -12,8 +12,10 @@ const NavBar = () => {
     return (
         <>
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">Gifter</Navbar.Brand>
+
+
                 <Nav className="mr-auto">
+                    <Nav.Link href="/">Gifter</Nav.Link>
                     <Nav.Link href="/">Feed</Nav.Link>
                     <Nav.Link href="/post/add">New Post</Nav.Link>
 

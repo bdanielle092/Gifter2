@@ -1,4 +1,5 @@
-﻿using Gifter2.Models;
+﻿using Gifter2.Data;
+using Gifter2.Models;
 using Gifter2.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,16 @@ namespace Gifter2.Controllers
     [ApiController]
     public class UserProfileController : ControllerBase
     {
-        private readonly IUserProfileRepository _userProfileRepository;
-        public UserProfileController(IUserProfileRepository userProfileRepository)
+        private readonly UserProfileRepository _userProfileRepository;
+        public UserProfileController(ApplicationDbContext context)
         {
-            _userProfileRepository = userProfileRepository;
+            _userProfileRepository = new UserProfileRepository(context);
+        }
+
+        [HttpGet("{firebaseUserId}")]
+        public IActionResult GetUserProfile(string firebaseUserId)
+        {
+            return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
         }
 
         [HttpGet]
@@ -37,10 +44,11 @@ namespace Gifter2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(UserProfile userProfile)
+        public IActionResult Post(UserProfile userProfile)
         {
+            userProfile.DateCreated = DateTime.Now;
             _userProfileRepository.Add(userProfile);
-            return CreatedAtAction("GET", new { id = userProfile.Id }, userProfile);
+            return Ok(userProfile);
         }
 
         [HttpPut("{id}")]

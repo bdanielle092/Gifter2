@@ -10,5 +10,6 @@ namespace Gifter2.Repositories
         void Add(UserProfile userProfile);
         void Update(UserProfile userProfile);
         public void Delete(int id);
+        UserProfile GetByFirebaseUserId(string firebaseUserId);
     }
 }

@@ -4,10 +4,20 @@ import PostList from "../components/Post/PostList";
 import PostForm from "../components/Post/PostForm";
 import PostDetails from "../components/Post/PostDetails";
 import UserPost from "../components/Post/UserPost";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 const ApplicationViews = props => {
     return (
         <Switch>
+
+            <Route path="/login">
+                <Login />
+            </Route>
+
+            <Route path="/register">
+                <Register />
+            </Route>
 
             <Route exact path="/" render={(props) => {
                 return <PostList {...props} />
