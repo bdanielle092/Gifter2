@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Post from '../Post/Post';
 import PostManager from "../../modules/PostManager";
-import PostSearch from "./Post";
+import PostSearch from "./PostSearch";
 
 const PostList = () => {
     const [posts, setPosts] = useState([]);

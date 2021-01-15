@@ -67,7 +67,13 @@ namespace Gifter.Controllers
         [HttpGet("search")]
         public IActionResult Search(string q, bool sortDesc)
         {
-            return Ok(_postRepository.Search(q, sortDesc));
+            if (q == null)
+            {
+                return Ok(_postRepository.GetAll());
+            }
+            else {
+                return Ok(_postRepository.Search(q, sortDesc));
+            }
         }
 
         //hottest is the end point and since is the query sting para.

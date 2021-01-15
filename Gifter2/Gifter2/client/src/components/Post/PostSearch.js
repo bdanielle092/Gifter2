@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Form, Input } from 'reactstrap';
 
@@ -7,9 +6,11 @@ const PostSearch = ({ onSearch }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`/api/posts/search?criterion=${searchTerm}`)
+        fetch(`/api/post/search?q=${searchTerm}`)
             .then(res => res.json())
-            .then(searchResults => onSearch(searchResults));
+            .then(searchResults => onSearch(searchResults))
+            .then(searchResults => console.log(searchResults))
+
     }
 
     return (
