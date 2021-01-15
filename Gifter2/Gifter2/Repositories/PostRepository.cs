@@ -19,7 +19,10 @@ namespace Gifter2.Repositories
 
         public List<Post> GetAll()
         {
-            return _context.Post.Include(p => p.UserProfile).ToList();
+            return _context.Post
+                .Include(p => p.UserProfile)
+                .OrderByDescending(p => p.DateCreated)
+                .ToList();
         }
 
         public Post GetById(int id)
@@ -33,8 +36,9 @@ namespace Gifter2.Repositories
 
         public List<Post> GetByUserProfileId(int id)
         {
-            return _context.Post.Include(p => p.UserProfile)
+            return _context.Post
                             .Where(p => p.UserProfileId == id)
+                            .Include(p => p.UserProfile)
                             .OrderBy(p => p.Title)
                             .ToList();
         }

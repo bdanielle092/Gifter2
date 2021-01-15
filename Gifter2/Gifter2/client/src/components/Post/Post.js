@@ -3,7 +3,7 @@ import { Card, CardImg, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
-    console.log(post)
+
     return (
         <Card className="m-4">
 
