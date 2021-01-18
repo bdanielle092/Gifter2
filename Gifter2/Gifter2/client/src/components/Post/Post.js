@@ -18,7 +18,12 @@ const Post = ({ post }) => {
                     <strong>{post.title}</strong>
                 </Link>
                 <p>{post.caption}</p>
-
+                <button type="button">
+                    Edit
+                </button>
+                <button type="button">
+                    Delete
+                </button>
             </CardBody>
         </Card>
     );

@@ -9,7 +9,7 @@ export default {
     },
 
     delete(id) {
-        return fetch(`${remoteURL}/recipes/${id}`, {
+        return fetch(`${remoteURL}/api/post/${id}`, {
             method: "DELETE"
         }).then(result => result.json())
     },
@@ -22,8 +22,8 @@ export default {
             body: JSON.stringify(newPost)
         }).then(data => data.json())
     },
-    updated(editedRecipe) {
-        return fetch(`${remoteURL}/recipes/${editedRecipe.id}`, {
+    updated(editedPost) {
+        return fetch(`${remoteURL}/api/post`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -31,9 +31,7 @@ export default {
             body: JSON.stringify(editedRecipe)
         }).then(data => data.json())
     },
-    getRecipesByUsername() {
-        return fetch(`${remoteURL}/recipes?_expand=user`).then(result => result.json())
-    },
+
 
 
 }
