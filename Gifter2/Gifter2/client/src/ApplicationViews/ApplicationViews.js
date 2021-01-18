@@ -9,9 +9,9 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 
 const ApplicationViews = props => {
+
     return (
         <Switch>
-
             <Route path="/login">
                 <Login />
             </Route>
@@ -35,9 +35,8 @@ const ApplicationViews = props => {
             <Route exact path="/users/:id" render={(props) => {
                 return <UserPost {...props} />
             }} />
-
-
         </Switch>
+
     );
 };
 

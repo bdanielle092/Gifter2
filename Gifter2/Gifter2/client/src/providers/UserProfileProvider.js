@@ -4,6 +4,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 
+export const UserProfileContext = createContext();
 
 export default function UserProfileProvider(props) {
     const apiUrl = "/api/userprofile";
@@ -76,4 +77,3 @@ export default function UserProfileProvider(props) {
         </UserProfileContext.Provider>
     );
 }
-export const UserProfileContext = createContext();
